@@ -1,0 +1,87 @@
+body {
+  width: 100%;
+  background-color: #282c34;
+  text-align: center;
+  font-family: VT323;
+  margin: 0;
+}
+
+h1 {
+  font-size: 70px;
+  color: #dbab51;
+  font-style:
+}
+
+.menu_button {
+  color: #e5e3e8;
+  font-size: 40px;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.menu_button:hover {
+  color: #c2a999;
+}
+
+a {
+  text-decoration: none;
+  color: #d58766;
+  font-size: 30px;
+}
+
+button {
+  letter-spacing: 0.1em;
+  font-size: 30px;
+  font-family: VT323;
+  background-color: transparent;
+  border: none;
+  color: #53acb7;
+  outline: none;
+  margin-left: 2em;
+}
+
+button:hover {
+  color: #3e81a8;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  caret-color: black;
+  text-align: center;
+  font-family: VT323;
+  font-size: 30px;
+  color: #abb2bf;
+  background-color: #4b5364;
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+  border: none;
+  width: 30em;
+}
+
+#addNew {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  margin-left: 0;
+}
+
+#save {
+  margin-left: 0;
+}
+
+@keyframes asd {
+  0% {font-weight: normal;}
+  50% {font-weight: bold;}
+  100% {font-weight: normal;}
+}
+
+.mark {
+  color: #bd1872;
+  animation-name: asd;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.hidden:after {
+  content: '\200b';
+}
