@@ -12,7 +12,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func main() {
   // get IP from file
-  IP, _ := handlers.ShareData()
+  IP := handlers.IP
 
   // serve css and js files
   http.Handle("/static/",

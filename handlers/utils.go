@@ -3,20 +3,19 @@ package handlers
 import (
   "os"
   "fmt"
+  "sync"
   "time"
   "bufio"
 )
 
+var mutex = &sync.Mutex{}
 
 // INITIALIZE IP AND DATABASE STRINGS FOR GLOBAL USE
 var IP string
-var connStr string
+var ConnStr string
 
 func init() {
-  IP, connStr = ConnectionData()
-}
-func ShareData() (string, string) {
-  return IP, connStr
+  IP, ConnStr = connectionData()
 }
 
 
@@ -29,7 +28,7 @@ type Package struct {
 
 
 // READ IP AND DATABASE STRINGS
-func ConnectionData() (string, string) {
+func connectionData() (string, string) {
   file, err := os.Open("local/data.txt")
   Check(err)
 
@@ -47,9 +46,13 @@ func ConnectionData() (string, string) {
 }
 
 
-// ERROR HANDLING AND LOGGING                 WRITE MUTEX HERE
+// ERROR HANDLING AND LOGGING
 func Check(err error) {
   if err != nil {
+
+    // lock mutex
+    mutex.Lock()
+    defer mutex.Unlock()
 
     // prepare log
     t := time.Now()

@@ -8,11 +8,8 @@ import (
 )
 
 func LoadBookmarks(w http.ResponseWriter, r *http.Request) {
-  // get connection string for database from file
-  _, connStr := ShareData()
-
   // connect to db
-  db, err := sql.Open("postgres", connStr)
+  db, err := sql.Open("postgres", ConnStr)
   Check(err)
   defer db.Close()
 

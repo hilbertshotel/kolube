@@ -15,11 +15,8 @@ func AddBookmark(w http.ResponseWriter, r *http.Request) {
   Check(err)
   json.Unmarshal(request, &newBookmark)
 
-  // get connection string for database from file
-  _, connStr := ShareData()
-
   // connect to database
-  db, err := sql.Open("postgres", connStr)
+  db, err := sql.Open("postgres", ConnStr)
   Check(err)
   defer db.Close()
 
