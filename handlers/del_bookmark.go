@@ -15,8 +15,10 @@ func DelBookmark(w http.ResponseWriter, r *http.Request) {
   Check(err)
   json.Unmarshal(request, &idToDelete)
 
+  // get connection string for database from file
+  _, connStr := ShareData()
+
   // connect to database
-  connStr := "postgres://postgres:password@localhost/kolube?sslmode=disable"
   db, err := sql.Open("postgres", connStr)
   Check(err)
   defer db.Close()

@@ -159,6 +159,15 @@ async function getRequest(route) {
 }
 
 
+let username = document.getElementById('input').value;
+
+let data = {
+  username: username,
+  password: password
+}
+
+route = "/verification"
+
 ///// POST REQUEST /////
 async function postRequest(data, route) {
   let url = `${IP}${route}`;
@@ -194,8 +203,8 @@ async function delRequest(data, route) {
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
-///// LOAD NOTES /////
-function loadNotes() {
+///// LOAD HISTORY /////
+function loadHistory() {
   bookmarks.innerHTML = '';
   document.getElementById('menu_bm').style = 'font-size:40px';
   document.getElementById('mark_bm').innerHTML = '';

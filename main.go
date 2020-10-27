@@ -3,16 +3,17 @@ package main
 import (
   "fmt"
   "net/http"
-  "bookmarks/handlers"
+  "kolube/handlers"
 )
-
-const IP string = "127.0.0.1:8000"
 
 func index(w http.ResponseWriter, r *http.Request) {
   http.ServeFile(w, r, "./templates/index.html")
 }
 
 func main() {
+  // get IP from file
+  IP, _ := handlers.ShareData()
+
   // serve css and js files
   http.Handle("/static/",
     http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
