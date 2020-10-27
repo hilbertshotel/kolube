@@ -1,2 +1,2 @@
-# Bookmarks
-This is a simple web app for handling bookmarks
+# kolube
+A simple web app for handling bookmarks
