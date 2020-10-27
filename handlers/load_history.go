@@ -7,22 +7,22 @@ import (
   _ "github.com/lib/pq"
 )
 
-func LoadBookmarks(w http.ResponseWriter, r *http.Request) {
+func LoadHistory(w http.ResponseWriter, r *http.Request) {
   // connect to db
   db, err := sql.Open("postgres", ConnStr)
   Check(err)
   defer db.Close()
 
   // query db
-  rows, err := db.Query("SELECT * FROM bookmarks")
+  rows, err := db.Query("SELECT * FROM history")
   Check(err)
   defer rows.Close()
 
   // load query into package
-  var response []BookmarkPackage
+  var response []HistoryBookmarkPackage
   for rows.Next() {
-    bookmark := BookmarkPackage{}
-    err = rows.Scan(&bookmark.Id, &bookmark.Url, &bookmark.Description)
+    bookmark := HistoryBookmarkPackage{}
+    err = rows.Scan(&bookmark.Id, &bookmark.Url, &bookmark.Description, &bookmark.Timestamp)
     Check(err)
     response = append(response, bookmark)
   }

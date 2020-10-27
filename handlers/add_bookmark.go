@@ -10,7 +10,7 @@ import (
 
 func AddBookmark(w http.ResponseWriter, r *http.Request) {
   // pick up request data
-  newBookmark := Package{}
+  newBookmark := BookmarkPackage{}
   request, err := ioutil.ReadAll(r.Body)
   Check(err)
   json.Unmarshal(request, &newBookmark)
@@ -23,5 +23,10 @@ func AddBookmark(w http.ResponseWriter, r *http.Request) {
   // add new bookmark to database
   _, err = db.Exec(`INSERT INTO bookmarks (url, description)
   VALUES ($1, $2)`, newBookmark.Url, newBookmark.Description)
+  Check(err)
+
+  // add new bookmark to history table
+  _, err = db.Exec(`INSERT INTO history (url, description)
+  VALUES ($1, $2 )`, newBookmark.Url, newBookmark.Description)
   Check(err)
 }

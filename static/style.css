@@ -82,6 +82,12 @@ input {
   animation-iteration-count: infinite;
 }
 
+#timestamp {
+  margin-left: 1em;
+  font-size: 30px;
+  color: #53acb7;
+}
+
 .hidden:after {
   content: '\200b';
 }

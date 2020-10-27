@@ -159,15 +159,6 @@ async function getRequest(route) {
 }
 
 
-let username = document.getElementById('input').value;
-
-let data = {
-  username: username,
-  password: password
-}
-
-route = "/verification"
-
 ///// POST REQUEST /////
 async function postRequest(data, route) {
   let url = `${IP}${route}`;
@@ -200,14 +191,42 @@ async function delRequest(data, route) {
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////
+///////////////////////////////// HISTORY ///////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
 ///// LOAD HISTORY /////
-function loadHistory() {
+async function loadHistory() {
   bookmarks.innerHTML = '';
   document.getElementById('menu_bm').style = 'font-size:40px';
   document.getElementById('mark_bm').innerHTML = '';
   document.getElementById('menu_nt').style = 'font-size:45px';
   document.getElementById('mark_nt').innerHTML = '*';
+
+  let response = await getRequest('/loadHistory');
+  if (response) {
+    for (hbm of response) {
+      createHistoryBookmark(hbm.Url, hbm.Description, hbm.Timestamp);
+    }
+  }
+}
+
+///// CREATE HISTORY BOOKMARK /////
+function createHistoryBookmark(url, description, timestamp) {
+  let link = createElement('a');
+  link.href = url;
+  link.innerHTML = description;
+  link.tagert = '_blank';
+  bookmarks.appendChild(link);
+
+  let ts = createElement('span');
+  ts.id = 'timestamp';
+
+  let time = timestamp.slice(11, 19);
+  let date = timestamp.slice(0, 10);
+  let datetime = `${date}  ${time}`;
+
+  ts.innerHTML = datetime;
+  bookmarks.appendChild(ts);
+
+  bookmarks.appendChild(createElement('br'));
 }

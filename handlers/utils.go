@@ -19,11 +19,19 @@ func init() {
 }
 
 
-// COMMUNICATION STRUCT
-type Package struct {
+// BOOKMARKS STRUCT
+type BookmarkPackage struct {
   Id int `json:id`
   Url string `json:url`
   Description string `json:description`
+}
+
+// HISTORY BOOKMARKS STRUCT
+type HistoryBookmarkPackage struct {
+  Id int `json:id`
+  Url string `json:url`
+  Description string `json:description`
+  Timestamp string `json:timestamp`
 }
 
 

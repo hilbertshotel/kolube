@@ -23,6 +23,7 @@ func main() {
   http.HandleFunc("/loadBookmarks", handlers.LoadBookmarks)
   http.HandleFunc("/addBookmark", handlers.AddBookmark)
   http.HandleFunc("/delBookmark", handlers.DelBookmark)
+  http.HandleFunc("/loadHistory", handlers.LoadHistory)
 
   // listen
   fmt.Println("Now serving @", IP)
