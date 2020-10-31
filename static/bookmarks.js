@@ -1,5 +1,5 @@
 // ON START
-const IP = 'http://127.0.0.1:8000';
+const IP = 'http://46.249.77.155:7419';
 let bookmarks = document.getElementById('bookmarks');
 
 
@@ -215,7 +215,7 @@ function createHistoryBookmark(url, description, timestamp) {
   let link = createElement('a');
   link.href = url;
   link.innerHTML = description;
-  link.tagert = '_blank';
+  link.target = '_blank';
   bookmarks.appendChild(link);
 
   let ts = createElement('span');
